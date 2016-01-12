@@ -7,9 +7,9 @@ LOCAL_MODULE := libpdfium
 LOCAL_ARM_MODE := arm
 LOCAL_NDK_STL_VARIANT := gnustl_static
 
-LOCAL_CFLAGS += -O3 -fstrict-aliasing -Wno-sign-compare
+LOCAL_CFLAGS += -O3 -fstrict-aliasing
 LOCAL_CFLAGS += -DFOXIT_CHROME_BUILD
-LOCAL_CPPFLAGS += -Wno-non-virtual-dtor -Wno-reorder
+LOCAL_CPPFLAGS += -Wno-non-virtual-dtor -Wno-reorder -Wno-unused-parameter -Wno-sign-compare
 
 ifeq ($(TARGET_ARCH),arm)
 LOCAL_CFLAGS += -fprefetch-loop-arrays -fexceptions -Wall
