@@ -7,12 +7,12 @@ LOCAL_MODULE:= libpdfiumcore
 LOCAL_ARM_MODE := arm
 LOCAL_NDK_STL_VARIANT := gnustl_static
 
-LOCAL_CFLAGS += -O3 -fstrict-aliasing -fprefetch-loop-arrays -fexceptions
-LOCAL_CFLAGS += -Wno-non-virtual-dtor -Wall
+LOCAL_CFLAGS += -O3 -fstrict-aliasing -Wno-sign-compare
+LOCAL_CPPFLAGS += -Wno-non-virtual-dtor -Wno-reorder
 
-# Work around gcc text relocation bug. Fixed in gcc 4.9.
-# TODO: remove this line after we've upgraded to gcc 4.9.
-LOCAL_CFLAGS_arm64 += -O2
+ifeq ($(TARGET_ARCH),arm)
+LOCAL_CFLAGS += -fprefetch-loop-arrays -fexceptions -Wall
+endif
 
 LOCAL_CFLAGS_arm64 += -D_FX_CPU_=_FX_X64_ -fPIC
 
